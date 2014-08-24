@@ -14,7 +14,7 @@ $('.foo').scrollto({
     target: '#bar',         // The element to scroll to (default is the anchor).
     namespace: '',          // Custom namespace (default: 'jQuery_scrollto').
     speed: 250,             // The speed (in ms) at which to scroll.
-    preventDefault: false,  // Prevent the default event from triggering.
+    preventDefault: true,   // Prevent the default event from triggering.
     stopPropagation: false  // Prevent all bubbling (USE WITH CAUTION!).
 });
 
@@ -40,7 +40,7 @@ $('.foo').scrollto({
             speed: 250,
             linearSpeed: false,
 
-            preventDefault: false,
+            preventDefault: true,
             stopPropagation: false
         };
 
