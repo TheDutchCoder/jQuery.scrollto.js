@@ -121,10 +121,6 @@ $('.foo').scrollto({
 
                             offset = $('#' + anchor).offset().top;
 
-                        } else {
-
-                            return;
-
                         }
 
                     } else {
