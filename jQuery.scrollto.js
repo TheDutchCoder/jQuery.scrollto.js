@@ -99,7 +99,8 @@ $('.foo').scrollto({
 
                     // If a trigger is specfied, make sure the actual trigger a
                     // jQuery object.
-                    if (options.trigger && $trigger.closest(options.trigger).length) {
+                    if (options.trigger &&
+                        $trigger.closest(options.trigger).length) {
 
                         $trigger = $trigger.closest(options.trigger);
 
