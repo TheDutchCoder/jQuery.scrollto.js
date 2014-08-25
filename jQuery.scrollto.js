@@ -66,7 +66,8 @@ $('.foo').scrollto({
                     'touchstart.' + options.namespace :
                     'click.' + options.namespace;
 
-            
+
+            // Listen for clicks on each attached element.
             $this.on(clickEvent, function(event) {
 
                 var $event_target,
@@ -77,20 +78,9 @@ $('.foo').scrollto({
 
                 $event_target = $(event.target);
 
-                
+
                 // Make sure we're handling just the events in this plugin.
                 if (event.handleObj.namespace === options.namespace) {
-
-
-                    // Check to see if preventDefault or stopPropagation are
-                    // required.
-                    if (options.preventDefault) {
-                        event.preventDefault();
-                    }
-
-                    if (options.stopPropagation) {
-                        event.stopPropagation();
-                    }
 
 
                     // This is the element that actually gets clicked.
@@ -110,7 +100,7 @@ $('.foo').scrollto({
                     // If no target is specified, check to see if the trigger
                     // has an anchor. If not, fail silently, otherwise try to
                     // scroll to the anchor.
-                    // 
+                    //
                     // If a target is specified, try to scroll to the target.
                     if (!options.target) {
 
@@ -121,6 +111,8 @@ $('.foo').scrollto({
 
                             offset = $('#' + anchor).offset().top;
 
+                            scrollTo(offset, options.speed);
+
                         }
 
                     } else {
@@ -128,27 +120,42 @@ $('.foo').scrollto({
                         $target = $(options.target);
                         offset = $target.offset().top;
 
+                        scrollTo(offset, options.speed);
+
                     }
-
-                    // speed = options.linearSpeed ? 
-
-                    scrollTo(offset, options.speed);
 
                 }
 
             });
-            
+
 
 
             /**
              * Scrolls the viewport to the specified target at the supplied
              * speed.
-             * 
+             *
              * @param  {Number} offset The vertical offset of the target.
              * @param  {Number} speed  The speed (in ms) at which to animate.
              */
             function scrollTo(offset, speed) {
 
+
+                // Check to see if preventDefault or stopPropagation are
+                // required.
+                if (options.preventDefault) {
+
+                    event.preventDefault();
+
+                }
+
+                if (options.stopPropagation) {
+
+                    event.stopPropagation();
+
+                }
+
+
+                // Start the scrolling.
                 $('html, body')
                     .stop()
                     .animate({
